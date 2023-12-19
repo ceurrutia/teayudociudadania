@@ -1,0 +1,37 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content%}
+
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+    <div class="row gx-5 justify-content-center">
+    <div class="col-xxl-8">
+        <div class="text-left my-5">
+
+            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Calculador de fechas</span></h2>
+                <p> Se te hace dificil el control documental?. Esta herramienta te ayudara a calcular fechas. </p>
+                
+    <form method="POST">
+        {% csrf_token %}
+
+       
+        
+        {{ form_dif_fechas.as_p }}
+        <button type="submit" class="btn btn-success">Calcular</button>
+
+        <div class="alert alert-primary" role="alert" style="margin-top:15px;">
+            <p>{{ diferencia_anios }} años, {{ diferencia_meses }} meses y {{ diferencia_dias }} días</p>
+          </div>
+        
+
+
+    </form>                
+
+</div>
+</div>
+</div>
+</section>
+
+{% endblock%}

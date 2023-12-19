@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content%}
+            <!-- Page content-->
+            <section class="py-5">
+                <div class="container px-5">
+                    <!-- Contact form-->
+                    <div class="bg-light rounded-4 py-5 px-4 px-md-5">
+                        <div class="text-center mb-5">
+                            <div class="feature bg-primary bg-gradient-primary-to-secondary text-white rounded-3 mb-3"><i class="bi bi-envelope"></i></div>
+                            <h1 class="fw-bolder">Contactanos</h1>
+                        </div>
+                        <div class="row gx-5 justify-content-center">
+                            <div class="col-lg-8 col-xl-6">
+                              
+                                <form method="post">
+
+
+                                    {% csrf_token %}
+                                    
+                                      {% if messages %}
+                                      {% for message in messages %}
+                                      <div class="alert alert-success" role="alert">
+                                        {{ message }} 
+                                        <p>Mensaje enviado el: {{ahora | date:'d/m/y'}}</p>
+                                      </div>
+                                      {% endfor %}
+                                      {% endif %}
+                      
+                      
+                                    {{ formulario_contacto.nombre.label_tag }}
+                                    {{ formulario_contacto.nombre }}
+                                    {{ formulario_contacto.nombre.errors }}
+
+                                    {{ formulario_contacto.apellido.label_tag }}
+                                    {{ formulario_contacto.apellido }}
+                                    {{ formulario_contacto.apellido.errors }}
+                      
+                                    {{ formulario_contacto.edad.label_tag }}
+                                    {{ formulario_contacto.edad }}
+                      
+                                    {% if formulario_contacto.edad.errors %}
+                                    <div class="alert alert-danger">
+                                      {{ formulario_contacto.edad.errors }} <!-- Muestra el mensaje de error de edad menor a 18 -->
+                                    </div>
+                                    {% endif %}
+                      
+                                    {{ formulario_contacto.mail.label_tag }}
+                                    {{ formulario_contacto.mail }}
+                                    {% if formulario_contacto.mail.errors %}
+                                    <div class="alert alert-danger">
+                                      {{ formulario_contacto.mail.errors }} <!-- Muestra el mensaje de error mail invalido -->
+                                    </div>
+                                    {% endif %}
+                      
+                                    {{ formulario_contacto.telefono.label_tag }}
+                                    {{ formulario_contacto.telefono }}
+                      
+                                      {% if formulario_contacto.telefono.errors %}
+                                      <div class="alert alert-danger">
+                                        {{ formulario_contacto.telefono.errors }} <!-- Muestra mensaje de error de telefono  -->
+                                      </div>
+                                      {% endif %}
+                      
+                                    {{ formulario_contacto.fecha.label_tag }}
+                                    {{ formulario_contacto.fecha }}
+                      
+                      
+                                      {% if formulario_contacto.fecha.errors %}
+                                      <div class="alert alert-danger">
+                                        {{ formulario_contacto.fecha.errors }} <!-- Muestra siguiente mensaje de error -->
+                                      </div>
+                                      {% endif %}
+                      
+                                    {{ formulario_contacto.tipo_consulta.label_tag }}
+                                    {{ formulario_contacto.tipo_consulta }}
+                                    {{ formulario_contacto.tipo_consulta.errors }}
+                      
+                                    {{ formulario_contacto.mensaje.label_tag }}
+                                    {{ formulario_contacto.mensaje }}
+                                    {{ formulario_contacto.mensaje.errors }}
+                                    
+                      
+                                  
+                      
+                                      <br> 
+                                      <button type="submit" class="btn btn-success">Enviar</button>
+                      
+                                    </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        {%endblock%}
