@@ -11,6 +11,12 @@ from .models import Contacto
 from datetime import datetime
 from dateutil import relativedelta
 from datetime import datetime
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
+from django.contrib.auth.decorators import login_required
+from .models import Categorias
+from typing import Any
+from django.urls import reverse_lazy
+from .models import Gestor
 
 # Create your views here.
 
@@ -22,8 +28,10 @@ def index(request) -> HttpResponse:
 def base(request: HttpRequest) -> HttpResponse:
     return render(request, 'base.html')
 
-def gestores(request: HttpRequest) -> HttpResponse:
-    return render(request, 'gestores.html')
+def gestores(request):
+    gestores = Gestor.objects.all()  
+    return render(request, 'gestores.html', {'gestores': gestores})
+
 
 def genealogistas(request: HttpRequest) -> HttpResponse:
     return render(request, 'genealogistas.html')
@@ -71,7 +79,7 @@ def contacto(request):
     return render(request, "contacto.html", contexto)
 
 
-
+#Caluclador de fechas
 
 
 def form_fechas(request):
@@ -107,6 +115,42 @@ def form_fechas(request):
     }
     return render(request, "form_fechas.html", contexto)
 
+#Crud gestores
+
+    
+def listado_gestores(request):
+    gestores = Gestor.objects.all() 
+    return render(request, "administracion/listado_gestores.html", {'gestores': gestores})
 
 
-            
+class Gestores(ListView):
+    model = Gestor
+    context_object_name = 'gestores'
+    template_name = 'administracion/listado_gestores.html'
+    ordering = ['nombre_gestoria']
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any):
+        if 'nombre_gestoria' in request.GET:
+            self.queryset = self.queryset.filter(nombre_gestoria__contains=request.GET['nombre_gestoria'])
+
+        return super().get(request, *args, **kwargs)
+
+
+class GestoresCreateView(CreateView):
+    model = Gestor
+    fields = ['nombre_gestoria', 'logo_gestoria', 'servicios', 'email', 'telefono', 'pais', 'ciudad']
+    template_name = 'administracion/create_gestor.html'
+    success_url = reverse_lazy('administracion/create_gestor')
+
+
+class GestoresUpdateView(UpdateView):
+    model = Gestor
+    fields = ['nombre_gestoria', 'logo_gestoria', 'servicios', 'email', 'telefono', 'pais', 'ciudad']
+    template_name = 'administracion/create_gestor.html'
+    success_url = reverse_lazy('listado_gestores')
+
+
+class GestoresDeleteView(DeleteView):
+    model = Gestor
+    template_name = 'administracion/gestor_eliminar.html'
+    success_url = reverse_lazy('listado_gestores')

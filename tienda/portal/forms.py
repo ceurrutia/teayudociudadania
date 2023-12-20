@@ -45,7 +45,7 @@ class contactForm(forms.Form):
         widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe aqui tu consulta'})
         )
     
-    
+#Form calculador de fechas   
     
 class form_dif_fechas(forms.Form):
     fecha_inicio = forms.DateField(
@@ -59,4 +59,13 @@ class form_dif_fechas(forms.Form):
         widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingresa la fecha de casamiento o defunción formato dd/mm/aaaa' })
         )
     
+    #Forms gestores
     
+    
+class FormCreateGestor(forms.Form):
+    nombre_gestoria = forms.CharField(label='Nombre gestoria:', required=True)
+    logo_gestoria = forms.CharField(label='Logo gestoria:', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url de la imagen: '}))
+    
+class FormEditGestor(forms.Form):
+    nombre_gestoria = forms.CharField(label='Nombre gestoria', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese nuevo nombre de la gestoria'}))
+    logo_gestoria = forms.CharField(label='Logo gestoria', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url nuevo logo de la gestoria'}))

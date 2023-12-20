@@ -14,16 +14,24 @@
     <h3> Tiene pereza? Contactese con un  gestor </h3>
   </div>
                           
+
+  <div class="row justify-content-center">
+    {% for gestor in gestores %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Logo Gestoria">
         <div class="card-body">
-          
-          <h5 class="card-title">Nombre gestoria</h5>
-          <p class="card-text">servicios que brindan.</p>
-          <a href="#" class="btn btn-primary">Ver tarjeta de contacto</a>
+          <h5 class="card-title">{{ gestor.nombre_gestoria }}</h5>
+          <img src="{{ gestor.logo_gestoria.url }}" width="200" alt="Logo">
+          <p class="card-text"><strong>Servicios: </strong>{{ gestor.servicios }}</p>
+          <p class="card-text"><strong>Correo electrónico: </strong>{{ gestor.email }}</p>
+          <p class="card-text"><strong>Teléfono: </strong>{{ gestor.telefono }}</p>
+          <p class="card-text"><strong>Pais: </strong>{{ gestor.pais }}</p>
+          <p class="card-text"><strong>Ciudad: </strong>{{ gestor.ciudad }}</p>
+          <p class="card-text"><strong>Sitio web: </strong>{{ gestor.sitio_web }}</p>
         </div>
       </div>
-    </div>
+    {% empty %}
+      <p>No hay gestores disponibles</p>
+    {% endfor %}
   </div>
 
 {%endblock%}

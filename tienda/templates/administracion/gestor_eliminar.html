@@ -1,0 +1,24 @@
+
+
+<div id="app" class="table-results">
+    <table class="table">
+        <h2 class="text-center">Panel de administración</h2>
+        {% extends "base.html" %}
+
+        {% block content%}
+
+  <div class="col-md-12">
+
+    <div class="section-headline text-Left">
+      <h1>Confirmar eliminacion </h1>
+      <p>¿Estás seguro de que deseas eliminar este gestor?</p>
+            <form method="post">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-danger" value="Confirmar eliminacion">
+        </form>
+        <button type="button" class="btn btn-primary"> <a href="{% url 'listado_gestores' %}">Volver a la lista</a></buton>
+    </div>
+  </div>
+</div>
+</div><!-- End Contact Section -->
+{% endblock%}
