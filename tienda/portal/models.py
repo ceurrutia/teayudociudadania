@@ -32,12 +32,13 @@ class Persona(models.Model):
     sitio_web = models.CharField(verbose_name="sitio web", max_length=100, blank=False, default="website")
     servicios = models.CharField(verbose_name="servicios", max_length= 200, null=False, default="Servicios informados")
     
+    
     def __str__(self) -> str:
         return f'{self.nombre} {self.apellido} - {self.email} - {self.telefono} - {self.pais} - {self.ciudad} - {self.sitio_web}'
 
     def clean(self):
-        if not (0 < self.telefono <= 999999999):
-            raise ValidationError("El número de teléfono debe ser un número positivo y no tener más de 9 dígitos.")
+        if not (0 < self.telefono <= 9999999999999):
+            raise ValidationError("El número de teléfono debe ser un número positivo y no tener más de 13 dígitos.")
         
     class Meta:
         abstract = True
@@ -52,10 +53,11 @@ class Gestor(Persona):
        verbose_name_plural = "Gestores"
        
 class Genealogista(Persona):
-    nombre_genealogista = models.CharField(verbose_name="nombre_genealogista", max_length=16)
+    nombre_genealogista = models.CharField(verbose_name="nombre_genealogista", max_length=100)
     logo_genealogista = models.ImageField(verbose_name="logo genealogista", upload_to='imagenes/', null=True)
    
-
+    class Meta:
+       verbose_name_plural = "Genealogistas"
     
 #categorias de contenido
 

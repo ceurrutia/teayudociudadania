@@ -8,22 +8,30 @@
   <div class="col-xxl-8">
       <div class="text-left my-5">
 
-  <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Genealogistas</span></h2>
-    
+  <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Genealogía Familiar</span></h2>
+    Antenatti, Family Search
+
   <div class="row">
-    <h3> Si no encontrás una partida, ellos te pueden ayudar </h3>
+    <p> Si no encontrás una partida, ellos te pueden ayudar </p>
   </div>
                           
+  <div class="row justify-content-center">
+    {% for genealogista in genealogistas %}
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Logo Gestoria">
         <div class="card-body">
-          
-          <h5 class="card-title">Bisagras de papel</h5>
-          <p class="card-text">Búsqueda genealógica en España, espcialmente en Galicia</p>
-          <a href="#" class="btn btn-primary">Ver tarjeta de contacto</a>
+          <h5 class="card-title">{{ genealogista.nombre_genealogista }}</h5>
+          <img src="{{ genealogista.logo_genealogista.url }}" width="200" alt="Logo">
+          <p class="card-text"><strong>Servicios: </strong>{{ genealogista.servicios }}</p>
+          <p class="card-text"><strong>Correo electrónico: </strong>{{ genealogist.email }}</p>
+          <p class="card-text"><strong>Teléfono: </strong>{{ genealogist.telefono }}</p>
+          <p class="card-text"><strong>Pais: </strong>{{ genealogista.pais }}</p>
+          <p class="card-text"><strong>Ciudad: </strong>{{ genealogista.ciudad }}</p>
+          <p class="card-text"><strong>Sitio web: </strong>{{ genealogista.sitio_web }}</p>
         </div>
       </div>
-    </div>
+    {% empty %}
+      <p>No hay genealogistas disponibles</p>
+    {% endfor %}
   </div>
 
 {%endblock%}

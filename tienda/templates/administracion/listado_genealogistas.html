@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content%}
+
+<div class="table-responsive">
+    <table class="table table-bordered">
+        <h4> Listado de Genealogistas</h4>
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre genealogista</th>
+                <th scope="col">Logo genealogista</th>
+                <th scope="col">Servicios</th>
+                <th scope="col">Email</th>
+                <th scope="col">Telefono</th>
+                <th scope="col">Pais</th>
+                <th scope="col">Ciudad</th>
+                <th scope="col">Acciones</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <!-- Iterar sobre cada categoria -->
+                 {% for genealogista in genealogistas %}
+                <td >{{ genealogista.id }}</td>
+                <td>{{ genealogista.nombre_genealogista }}</td>
+                <td>{{ genealogista.logo_genealogista }}</td>
+                <td>{{ genealogista.servicios }}</td>
+                <td>{{ genealogista.email }}</td>
+                <td>{{ genealogista.telefono }}</td>
+                <td>{{ genealogista.pais }}</td>
+                <td>{{ genealogista.ciudad }}</td>
+               
+                <td>
+                   
+                   <!-- Botón para editar serie -->
+                   <a class="btn btn-primary" 
+                   href="/genealogista/{{ genealogista.id }}/editar/"
+                   >Editar</a>
+                   <!-- Botón para eliminar serie -->
+                   <a type="button" class="btn btn-danger"
+                   href="/genealogista/{{ genealogista.id }}/eliminar/"
+                       >Eliminar</button>
+                        
+                </td>
+                
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-success" style="margin-right:5px;" ><a href={% url "create_genealogista" %}>Añadir
+        nuevo genealogista
+    </a></button> 
+    
+</div>
+{%endblock%}

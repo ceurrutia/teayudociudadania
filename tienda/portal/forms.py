@@ -64,8 +64,20 @@ class form_dif_fechas(forms.Form):
     
 class FormCreateGestor(forms.Form):
     nombre_gestoria = forms.CharField(label='Nombre gestoria:', required=True)
-    logo_gestoria = forms.CharField(label='Logo gestoria:', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url de la imagen: '}))
+    logo_gestoria = forms.ImageField(label='Logo gestoria:', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url de la imagen: '}))
     
 class FormEditGestor(forms.Form):
     nombre_gestoria = forms.CharField(label='Nombre gestoria', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese nuevo nombre de la gestoria'}))
-    logo_gestoria = forms.CharField(label='Logo gestoria', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url nuevo logo de la gestoria'}))
+    logo_gestoria = forms.ImageField(label='Logo gestoria', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url nuevo logo de la gestoria'}))
+
+
+#Forms genealogistas
+    
+    
+class FormCreateGnealogista(forms.Form):
+    nombre_genalogista = forms.CharField(label='Nombre genealogista:', required=True)
+    logo_genalogista = forms.ImageField(label='Logo genalogista:', required=True, widget=forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url de la imagen: '}))
+    
+class FormEditGenealogista(forms.Form):
+    nombre_genealogista = forms.CharField(label='Nombre genealogista', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese nuevo nombre de la genealogista'}))
+    logo_genalogista = forms.ImageField(label='Logo genalogistaa', required=True, widget=forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url nuevo logo de genalogista'}))

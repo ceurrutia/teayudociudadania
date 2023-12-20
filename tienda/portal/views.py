@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Categorias
 from typing import Any
 from django.urls import reverse_lazy
-from .models import Gestor
+from .models import Gestor, Genealogista
 
 # Create your views here.
 
@@ -32,9 +32,10 @@ def gestores(request):
     gestores = Gestor.objects.all()  
     return render(request, 'gestores.html', {'gestores': gestores})
 
+def genealogistas(request):
+    genealogistas = Genealogista.objects.all()  
+    return render(request, 'genealogistas.html', {'genealogistas': genealogistas})
 
-def genealogistas(request: HttpRequest) -> HttpResponse:
-    return render(request, 'genealogistas.html')
 
 def acerca(request: HttpRequest) -> HttpResponse:
     return render(request, 'acerca.html')
@@ -154,3 +155,42 @@ class GestoresDeleteView(DeleteView):
     model = Gestor
     template_name = 'administracion/gestor_eliminar.html'
     success_url = reverse_lazy('listado_gestores')
+    
+    #Genealogistas
+    
+def listado_genealogistas(request):
+    genealogistas = Genealogista.objects.all() 
+    return render(request, "administracion/listado_genealogistas.html", {'genealogistas': genealogistas})
+
+
+class Genealogistas(ListView):
+    model = Genealogista
+    context_object_name = 'genealogistas'
+    template_name = 'administracion/listado_genealogistas.html'
+    ordering = ['nombre_genealogista']
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any):
+        if 'nombre_genealogista' in request.GET:
+            self.queryset = self.queryset.filter(nombre_genealogista__contains=request.GET['nombre_genealogista'])
+
+        return super().get(request, *args, **kwargs)
+
+
+class GenealogistasCreateView(CreateView):
+    model = Genealogista
+    fields = ['nombre_genealogista', 'logo_genealogista', 'servicios', 'email', 'telefono', 'pais', 'ciudad']
+    template_name = 'administracion/create_genealogista.html'
+    success_url = reverse_lazy('administracion/create_genealogista')
+
+
+class GenealogistasUpdateView(UpdateView):
+    model = Genealogista
+    fields = ['nombre_genealogista', 'logo_genealogista', 'servicios', 'email', 'telefono', 'pais', 'ciudad']
+    template_name = 'administracion/create_genealogista.html'
+    success_url = reverse_lazy('listado_genealogistas')
+
+
+class GenealogistasDeleteView(DeleteView):
+    model = Genealogista
+    template_name = 'administracion/genealogista_eliminar.html'
+    success_url = reverse_lazy('listado_genealogistas')
