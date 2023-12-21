@@ -40,6 +40,9 @@ def genealogistas(request):
 def acerca(request: HttpRequest) -> HttpResponse:
     return render(request, 'acerca.html')
 
+def consulados(request: HttpRequest) -> HttpResponse:
+    return render(request, 'consulados.html')
+
 
 def contacto(request):
     formulario_contacto = contactForm()

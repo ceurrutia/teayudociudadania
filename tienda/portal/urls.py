@@ -11,6 +11,7 @@ urlpatterns = [
     path("acerca/", views.acerca, name="acerca"),
     path("form_fechas/", views.form_fechas, name="form_fechas"),
     path("genealogistas/", views.genealogistas, name="genealogistas"),
+    path("consulados/", views.consulados, name="consulados"),
     
     #Crud gestores
     path('listado_gestores/', views.listado_gestores, name='listado_gestores'),
