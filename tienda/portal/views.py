@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Categorias
 from typing import Any
 from django.urls import reverse_lazy
-from .models import Gestor, Genealogista
+from .models import Gestor, Genealogista, Consulado
 
 # Create your views here.
 
@@ -40,8 +40,10 @@ def genealogistas(request):
 def acerca(request: HttpRequest) -> HttpResponse:
     return render(request, 'acerca.html')
 
-def consulados(request: HttpRequest) -> HttpResponse:
-    return render(request, 'consulados.html')
+
+def consulados(request):
+    consulados = Consulado.objects.all() 
+    return render(request, 'consulados.html', {'consulados': consulados})
 
 
 def contacto(request):
@@ -197,3 +199,44 @@ class GenealogistasDeleteView(DeleteView):
     model = Genealogista
     template_name = 'administracion/genealogista_eliminar.html'
     success_url = reverse_lazy('listado_genealogistas')
+    
+#Consulados
+
+def listado_consulados(request):
+    consulados = Consulado.objects.all() 
+    return render(request, "administracion/listado_consulados.html", {'consulados': consulados})
+
+
+
+class Consulados(ListView):
+    model = Consulado
+    context_object_name = 'consulados'
+    template_name = 'administracion/listado_consulados.html'
+    ordering = ['nombre_consulado']
+
+    def get(self, request: HttpRequest, *args: Any, **kwargs: Any):
+        if 'nombre_consulado' in request.GET:
+            self.queryset = self.queryset.filter(nombre_consulado__contains=request.GET['nombre_consulado'])
+
+        return super().get(request, *args, **kwargs)
+    
+
+class ConsuladosCreateView(CreateView):
+    model = Consulado
+    fields = ['nombre_consulado', 'servicios', 'email', 'telefono', 'pais', 'ciudad', 'horarios']
+    template_name = 'administracion/create_consulado.html'
+    success_url = reverse_lazy('listado_consulados')
+
+
+class ConsuladosUpdateView(UpdateView):
+    model = Consulado
+    fields = ['nombre_consulado', 'servicios', 'email', 'telefono', 'pais', 'ciudad', 'horarios']
+    template_name = 'administracion/create_consulado.html'
+    success_url = reverse_lazy('listado_consulados')
+
+
+class ConsuladosDeleteView(DeleteView):
+    model = Consulado
+    template_name = 'administracion/consulado_eliminar.html'
+    success_url = reverse_lazy('listado_consulados')
+    

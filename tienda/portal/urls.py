@@ -19,10 +19,10 @@ urlpatterns = [
     path('gestoria/<int:pk>/editar/', views.GestoresUpdateView.as_view(), name='gestor_editar'),
     path('gestoria/<int:pk>/eliminar/', views.GestoresDeleteView.as_view(), name='gestor_eliminar'),
     
-     #Crud genealogistas
-    path('listado_genealogistas/', views.listado_genealogistas, name='listado_genealogistas'),
-    path('create_genealogista/', views.GenealogistasCreateView.as_view(), name = "create_genealogista"),
-    path('genealogista/<int:pk>/editar/', views.GenealogistasUpdateView.as_view(), name='genealogista_editar'),
-    path('genealogista/<int:pk>/eliminar/', views.GenealogistasDeleteView.as_view(), name='genealogista_eliminar'),
+    #Crud consulados
+    path('listado_consulados/', views.listado_consulados, name='listado_consulados'),
+    path('create_consulado/', views.ConsuladosCreateView.as_view(), name = "create_consulado"),
+    path('consulados/<int:pk>/editar/', views.ConsuladosUpdateView.as_view(), name='consulado_editar'),
+    path('consulados/<int:pk>/eliminar/', views.ConsuladosDeleteView.as_view(), name='consulado_eliminar'),
     
 ]

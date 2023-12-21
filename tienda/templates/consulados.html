@@ -15,9 +15,32 @@
     <div class="row">
       <p> Informacion Util </p>
     </div>
-                            
+             
+    
+    <div class="row justify-content-center">
+      {% for consulado in consulados %}
+      <div class="col-md-4 mb-4">
+          <div class="card">
+              <div class="card-body">
+                  <h5 class="card-title">{{ consulado.nombre_consulado }}</h5>
+                  <p class="card-text"><strong>Servicios: </strong>{{ consulado.servicios }}</p>
+                  <p class="card-text"><strong>Correo electrónico: </strong>{{ consulado.email }}</p>
+                  <p class="card-text"><strong>Teléfono: </strong>{{ consulado.telefono }}</p>
+                  <p class="card-text"><strong>Pais: </strong>{{ consulado.pais }}</p>
+                  <p class="card-text"><strong>Ciudad: </strong>{{ consulado.ciudad }}</p>
+                  <p class="card-text"><strong>Sitio web: </strong>{{ consulado.sitio_web }}</p>
+                  <p class="card-text"><strong>Horarios: </strong>{{ consulado.horarios }}</p>
+              </div>
+          </div>
+      </div>
+      {% empty %}
+      <p>No hay consulados disponibles</p>
+      {% endfor %}
+    </div>
+  
     
     </div>
-
+ 
+  </div>
 
 {% endblock%}

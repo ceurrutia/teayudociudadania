@@ -30,7 +30,7 @@ class Persona(models.Model):
     pais = models.CharField(verbose_name='pais', max_length=50)
     ciudad = models.CharField(verbose_name='ciudad', max_length=50)
     sitio_web = models.CharField(verbose_name="sitio web", max_length=100, blank=False, default="website")
-    servicios = models.CharField(verbose_name="servicios", max_length= 200, null=False, default="Servicios informados")
+    servicios = models.CharField(verbose_name="servicios", max_length= 500, null=False, default="Servicios informados")
     
     
     def __str__(self) -> str:
@@ -72,10 +72,21 @@ class Categorias(models.Model):
        
  #Calculador de fechas
     
-    class Selectfechas(models.Model):
+class Selectfechas(models.Model):
         fecha_inicial = models.DateField(verbose_name="Fecha inicial")
         fecha_final = models.DateField(verbose_name="Fecha final ")
         
         def __str__(self) -> str:
             return f'{self.fecha_inicial} - {self.fecha_final} '
       
+#Consulados
+
+class Consulado(Persona):
+        nombre_consulado = models.CharField(verbose_name="nombre_consulado")
+        horarios = models.CharField(verbose_name="horarios")
+        
+        def __str__(self) -> str:
+            return f'{self.nombre_consulado} -{self.horarios}'
+        
+        class Meta:
+            verbose_name_plural = "Consulados"

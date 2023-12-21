@@ -81,3 +81,14 @@ class FormCreateGnealogista(forms.Form):
 class FormEditGenealogista(forms.Form):
     nombre_genealogista = forms.CharField(label='Nombre genealogista', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese nuevo nombre de la genealogista'}))
     logo_genalogista = forms.ImageField(label='Logo genalogistaa', required=True, widget=forms.FileInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese url nuevo logo de genalogista'}))
+
+
+#Forms consulados
+
+class FormCreateConsulado(forms.Form):
+    nombre_consulado = forms.CharField(label='Nombre consulado:', required=True)
+    horarios = forms.CharField(label='horarios:', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese horarios del consulado: '}))
+    
+class FormEditConsulado(forms.Form):
+    nombre_consulado = forms.CharField(label='Nombre consulado', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese nuevo nombre del consulado: '}))
+    horarios = forms.CharField(label='horarios:', required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Ingrese horarios del consulado: '}))
