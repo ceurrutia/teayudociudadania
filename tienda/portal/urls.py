@@ -12,6 +12,9 @@ urlpatterns = [
     path("form_fechas/", views.form_fechas, name="form_fechas"),
     path("genealogistas/", views.genealogistas, name="genealogistas"),
     path("consulados/", views.consulados, name="consulados"),
+    path("ciudadania_italiana/", views.ciudadania_italiana, name="ciudadania_italiana"),
+    path("ciudadania_espanola/", views.ciudadania_espanola, name="ciudadania_espanola"),
+    
     
     #Crud gestores
     path('listado_gestores/', views.listado_gestores, name='listado_gestores'),

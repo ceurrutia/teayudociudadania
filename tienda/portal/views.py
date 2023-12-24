@@ -40,6 +40,13 @@ def genealogistas(request):
 def acerca(request: HttpRequest) -> HttpResponse:
     return render(request, 'acerca.html')
 
+def ciudadania_italiana(request: HttpRequest) -> HttpResponse:
+    return render(request, 'ciudadania_italiana.html')
+
+
+def ciudadania_espanola(request: HttpRequest) -> HttpResponse:
+    return render(request, 'ciudadania_espanola.html')
+
 
 def consulados(request):
     consulados = Consulado.objects.all() 

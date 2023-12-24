@@ -17,8 +17,8 @@
 
   <div class="row justify-content-center">
     {% for gestor in gestores %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
+    <div class="col-md-4 mb-4" >
+        <div class="card" style="padding:15px;">
           <h5 class="card-title">{{ gestor.nombre_gestoria }}</h5>
           <img src="{{ gestor.logo_gestoria.url }}" width="200" alt="Logo">
           <p class="card-text"><strong>Servicios: </strong>{{ gestor.servicios }}</p>
@@ -32,6 +32,6 @@
     {% empty %}
       <p>No hay gestores disponibles</p>
     {% endfor %}
-  </div>
+</div>
 </div>
 {%endblock%}

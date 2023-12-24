@@ -11,7 +11,7 @@
                                 <h1 class="display-3 fw-bolder mb-5"><span class="text-gradient d-inline">Recursos gratuitos para tramitar tu ciudadanía española - italiana</span></h1>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl-start mb-3">
                                     <a class="btn btn-primary btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder" href="{% url "form_fechas" %}">Calculador de fechas</a>
-                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "gestores" %}">Gestores</a>
+                                    <a class="btn btn-outline-dark btn-lg px-5 py-3 fs-6 fw-bolder" href="{% url "genealogistas" %}">Búsqueda de antepasados</a>
                                 </div>
                             </div>
                         </div>
@@ -22,46 +22,92 @@
                             <div class="text-center my-5">
                                 <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Por donde empiezo?</span></h2>
                                 <p class="lead fw-light mb-4">Empecemos recabando información acerca de tus antespadaos preguntandole a tu familia.</p>
-                                <p class="text-muted">Dos portales fundamentales son Antenatti y Family Search</p>
+                                
+                                <div class="accordion" id="accordionPanelsStayOpenExample">
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header">
+                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                                          Paso 1: Reunir la documentación
+                                        </button>
+                                      </h2>
+                                      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                                        <div class="accordion-body">
+                                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                          Paso 2: Organizar en carpetas, traducciones
+                                        </button>
+                                      </h2>
+                                      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                          <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                      </div>
+                                    </div>
+                                    <div class="accordion-item">
+                                      <h2 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                          Paso 3: Apostilla de La Haya. Presentación de carpeta.
+                                        </button>
+                                      </h2>
+                                      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                          <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                
+                                
+                               
                               
                             </div>
-                        </div>
-                  
-            </section>
 
-                        <!--start productos-->
-                        <hr>
-
+                            
+          <!-- ACCORDIONS -->
+                            <div class="text-center my-5">
+                              <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Portales de ayuda</span></h2>
+                            </div>
                         
                         <div class="row">
-                            <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Tiene pereza? Contrate un gestor</span></h2>
-                         
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="{% static 'assets/teayudo.svg.svg' %}" style="width:200px" alt="Card image cap"/>
-                            <div class="card-body">
-                              <h5 class="card-title">Gestoría Lunduivist</h5>
-                              <p class="card-text">Estudio familiar de mar del Plata, ciudadanía española, italiana y portuguesa.</p>
-                              <a href="#" class="btn btn-primary">Ver Tarjeta</a>
-                            </div>
-                          </div>
-                        </div>
-                    
-
-                        <div class="col-xxl-7">
-                            <!-- Header profile picture-->
-                            <div class="d-flex justify-content-center mt-5 mt-xxl-0">
-                                <div class="profile bg-gradient-primary-to-secondary">
-                                  
-                                    <img class="profile-img" src="{% static 'assets/profile.png' %}" alt="profile" />
-                                    <div class="dots-1">
-                                        
-                                    </div>
+                            <div class="card" style="width: 20rem; margin: 10px;">
+                                <div class="card-body">
+                                  <h5 class="card-title">Portal Antenatti</h5>
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">Archivos para la búsqueda de datos personales del estado italiano</h6>
+                                  <p class="card-text">Archivos del Estado italiano, esenciales para realizar investigaciones sobre la historia 
+                                    familiar e individual, pero también de gran interés para la investigación histórica, 
+                                    genealógica, demográfica y de ciencias sociales.</p>
+                                  <a class="btn btn-dark btn-lg px-5 py-3 fs-6 fw-bolder" target="_blank" href="https://antenati.cultura.gov.it/?lang=es" >Buscar registros</a>
                                 </div>
+                              </div>
+
+                              <div class="card" style="width: 20rem;margin: 10px;">
+                                <div class="card-body">
+                                  <h5 class="card-title">Portal Family Search</h5>
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">Herramientas gratuitas para ayudarte a descubrir tu genealogía</h6>
+                                  <p class="card-text">Organización sin ánimo de lucro fundada originalmente como la Sociedad Genealógica de Utah (Registros de España, Italia y otros países).</p>
+                                  <a class="btn btn-dark btn-lg px-5 py-3 fs-6 fw-bolder" target="_blank" href="https://www.familysearch.org/search/" class="card-link">Buscar registros</a>
+                                
+                                </div>
+                              </div>
+
+
+                              <div class="card" style="width: 20rem;margin: 10px;">
+                                <div class="card-body">
+                                  <h5 class="card-title">Otros portales</h5>
+                                  <h6 class="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
+                                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                  <a href="#" class="card-link">Card link</a>
+                                  <a href="#" class="card-link">Another link</a>
+                                </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </header>
-           
+                  
+            
+
         </main>
        {% endblock%}

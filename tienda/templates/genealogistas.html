@@ -9,16 +9,38 @@
       <div class="text-left my-5">
 
   <h2 class="display-5 fw-bolder"><span class="text-gradient d-inline">Genealogía Familiar</span></h2>
-    Antenatti, Family Search
+  <div class="row">
+    <div class="card" style="width: 20rem; margin: 10px;">
+        <div class="card-body">
+          <h5 class="card-title">Portal Antenatti</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Archivos para la búsqueda de datos personales del estado italiano</h6>
+          <p class="card-text">Archivos del Estado italiano, esenciales para realizar investigaciones sobre la historia 
+            familiar e individual, pero también de gran interés para la investigación histórica, 
+            genealógica, demográfica y de ciencias sociales.</p>
+          <a class="btn btn-dark btn-lg px-5 py-3 fs-6 fw-bolder" target="_blank" href="https://antenati.cultura.gov.it/?lang=es" >Buscar registros</a>
+        </div>
+      </div>
+
+      <div class="card" style="width: 20rem;margin: 10px;">
+        <div class="card-body">
+          <h5 class="card-title">Portal Family Search</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Herramientas gratuitas para ayudarte a descubrir tu genealogía</h6>
+          <p class="card-text">Organización sin ánimo de lucro fundada originalmente como la Sociedad Genealógica de Utah (Registros de España, Italia y otros países).</p>
+          <a class="btn btn-dark btn-lg px-5 py-3 fs-6 fw-bolder" target="_blank" href="https://www.familysearch.org/search/" class="card-link">Buscar registros</a>
+        
+        </div>
+      </div>
+
+      <hr>
 
   <div class="row">
     <p> Si no encontrás una partida, ellos te pueden ayudar </p>
   </div>
                           
-  <div class="row justify-content-center">
+  <div class="row ">
     {% for genealogista in genealogistas %}
-    <div class="card" style="width: 18rem;">
-        <div class="card-body">
+    <div class="col-md-4 mb-4" >
+        <div class="card" style="padding:15px;">
           <h5 class="card-title">{{ genealogista.nombre_genealogista }}</h5>
           <img src="{{ genealogista.logo_genealogista.url }}" width="200" alt="Logo">
           <p class="card-text"><strong>Servicios: </strong>{{ genealogista.servicios }}</p>
