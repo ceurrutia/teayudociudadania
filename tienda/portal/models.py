@@ -26,7 +26,7 @@ class Persona(models.Model):
     nombre = models.CharField(verbose_name='Nombre', max_length=100)
     apellido = models.CharField(verbose_name='Apellido', max_length=50)
     email = models.EmailField(verbose_name="Email", max_length=250)
-    telefono = models.IntegerField(verbose_name="telefono")
+    telefono = models.CharField(verbose_name="telefono", max_length= 18)
     pais = models.CharField(verbose_name='pais', max_length=50)
     ciudad = models.CharField(verbose_name='ciudad', max_length=50)
     sitio_web = models.CharField(verbose_name="sitio web", max_length=100, blank=False, default="website")
@@ -37,9 +37,9 @@ class Persona(models.Model):
         return f'{self.nombre} {self.apellido} - {self.email} - {self.telefono} - {self.pais} - {self.ciudad} - {self.sitio_web}'
 
     def clean(self):
-        if not (0 < self.telefono <= 9999999999999):
-            raise ValidationError("El número de teléfono debe ser un número positivo y no tener más de 13 dígitos.")
-        
+        if not (0 < len(self.telefono) <= 18):  # Verificar la longitud del número
+            raise ValidationError("El número de teléfono debe tener entre 1 y 18 caracteres.")
+
     class Meta:
         abstract = True
 

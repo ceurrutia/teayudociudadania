@@ -14,7 +14,8 @@ urlpatterns = [
     path("consulados/", views.consulados, name="consulados"),
     path("ciudadania_italiana/", views.ciudadania_italiana, name="ciudadania_italiana"),
     path("ciudadania_espanola/", views.ciudadania_espanola, name="ciudadania_espanola"),
-    
+    path("search_view/", views.search_view, name="search_view"),
+
     
     #Crud gestores
     path('listado_gestores/', views.listado_gestores, name='listado_gestores'),

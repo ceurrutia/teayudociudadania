@@ -7,7 +7,7 @@ from django.core.mail import send_mail
 from datetime import datetime
 from django.template import Template
 from portal.forms import contactForm, form_dif_fechas
-from .models import Contacto
+from .models import Contacto, Persona
 from datetime import datetime
 from dateutil import relativedelta
 from datetime import datetime
@@ -17,6 +17,10 @@ from .models import Categorias
 from typing import Any
 from django.urls import reverse_lazy
 from .models import Gestor, Genealogista, Consulado
+from django.contrib.auth import authenticate, logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.models import User, Group
 
 # Create your views here.
 
@@ -130,7 +134,7 @@ def form_fechas(request):
 
 #Crud gestores
 
-    
+  
 def listado_gestores(request):
     gestores = Gestor.objects.all() 
     return render(request, "administracion/listado_gestores.html", {'gestores': gestores})
@@ -246,4 +250,22 @@ class ConsuladosDeleteView(DeleteView):
     model = Consulado
     template_name = 'administracion/consulado_eliminar.html'
     success_url = reverse_lazy('listado_consulados')
-    
+
+
+#buscador
+
+def search_view(request):
+    query = request.GET.get('q') 
+
+    if query:
+        gestores = Gestor.objects.filter(
+            nombre__icontains=query) | Gestor.objects.filter(
+            apellido__icontains=query) | Gestor.objects.filter(
+            email__icontains=query)
+    else:
+        gestores = Gestor.objects.none() 
+    context = {
+        'gestores': gestores, 
+        'query': query,
+    }
+    return render(request, 'search_view.html', context)
